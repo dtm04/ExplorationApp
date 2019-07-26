@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  The nav graph represents all of your app's navigation paths (all destinations and actions). -->
+<!-- https://developer.android.com/guide/navigation -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/mapsActivity">
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.explorationapp.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/socialFragment"
+        android:name="com.example.explorationapp.SocialFragment"
+        android:label="fragment_social"
+        tools:layout="@layout/fragment_social" />
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.example.explorationapp.StatsFragment"
+        android:label="fragment_stats"
+        tools:layout="@layout/fragment_stats" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.example.explorationapp.MapsActivity"
+        android:label="MapsActivity" />
+</navigation>
