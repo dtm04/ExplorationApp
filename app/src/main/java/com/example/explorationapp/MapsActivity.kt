@@ -1,20 +1,13 @@
 package com.example.explorationapp
 
 import android.content.pm.PackageManager
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
-import androidx.core.view.GravityCompat
-import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.explorationapp.databinding.ActivityMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -22,42 +15,24 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var navController: NavController
-    private lateinit var map: GoogleMap
+
+    private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var lastLocation: Location
+    private var BOSTON = LatLng(42.0, 71.0)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_maps)
-        val binding: ActivityMapsBinding = DataBindingUtil.setContentView(this,
-            R.layout.activity_maps)
-        drawerLayout = binding.drawerLayout
-        navController = findNavController(R.id.nav_host_fragment)
-        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
-
-        //setSupportActionBar(binding.toolbar)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        // set up nav menu
-        findViewById<NavigationView>(R.id.nav_view).setupWithNavController(navController)
-
-        // TODO: revert map to NoActionBar theme, add toolbar to binding, customize toolbar!
-        // Set up navigation menu
-        //binding.navView.setupWithNavController(navController)
-
+        setContentView(R.layout.activity_maps)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
-
         mapFragment.getMapAsync(this)
-    }
-
-    override fun onMarkerClick(p0: Marker?): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     /**
@@ -70,55 +45,47 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-        map = googleMap
-
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        // TODO: allow users to save locations, create functions to use locations
-        val savedLocation = LatLng(42.36, -71.06)
-        map.addMarker(MarkerOptions().position(savedLocation).title("User checkpoint!"))
-        // 0 = zoomed far out
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(savedLocation, 12.0f))
-        map.moveCamera(CameraUpdateFactory.newLatLng(savedLocation))
-        map.uiSettings.isZoomControlsEnabled = true
-        // sets MapsActivity as the callback when a user clicks a marker on the map
-        // TODO: Implement function to handle map markers
-        map.setOnMarkerClickListener(this)
-
+        mMap = googleMap
+        mMap.uiSettings.isZoomControlsEnabled = true
+        mMap.setOnMarkerClickListener(this)
         setUpMap()
+    }
+
+    /**
+     *
+     */
+    private fun setUpMap() {
+        // Make sure app has been granted "access fine location" permissions
+        if (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+            return
+        }
+
+        // adds 'my location' layer, draws blue dot for curr location, and adds center camera button
+        mMap.isMyLocationEnabled = true
+
+        // gives most recent location
+        fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
+            // if we have the most recent loc, then center camera
+            // TODO: uncover map fog based on recent location
+            if (location != null) {
+                lastLocation = location
+                val currentLatLng = LatLng(location.latitude, location.longitude)
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
+            }
+        }
+
+    }
+
+
+    override fun onMarkerClick(p0: Marker?): Boolean {
+        return false
     }
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
-    }
-
-    /**
-     * check if app has been granted ACCESS_FINE_LOCATION, if it hasn't then request it.
-     */
-    private fun setUpMap() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE
-            )
-            return
-        }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
     }
 
 }
