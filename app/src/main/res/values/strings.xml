@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ExplorationApp</string>
     <string name="title_activity_main">International EPIC</string>
-    <string name="favorites_fragment">Favorite Locations</string>
+    <string name="favorites_fragment">Favorites</string>
     <string name="map_fragment">Map</string>
     <string name="social_fragment">Social</string>
     <string name="stats_fragment">Your Statistics</string>
