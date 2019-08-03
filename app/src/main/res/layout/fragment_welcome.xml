@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
 
     <Button
         android:id="@+id/map_btn"
@@ -45,6 +45,6 @@
         android:contentDescription="@string/background_image"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

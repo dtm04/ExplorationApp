@@ -25,8 +25,15 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import com.example.explorationapp.room.User
+import com.example.explorationapp.helper.DatabaseHelper
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+    // permissions object
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+        private const val REQUEST_CHECK_SETTINGS = 2
+    }
 
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -36,14 +43,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
     private var locationUpdateState = false
-
-    // permissions object
-    companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
-        private const val REQUEST_CHECK_SETTINGS = 2
-    }
-
-
+    private val databaseHelper = DatabaseHelper("0440")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,17 +52,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        createLocationCallback()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        // uses locationCallback to update last location
-        locationCallback = object : LocationCallback() {
-            override fun onLocationResult(p0: LocationResult) {
-                super.onLocationResult(p0)
-
-                lastLocation = p0.lastLocation
-                placeMarkerOnMap(LatLng(lastLocation.latitude, lastLocation.longitude))
-            }
-        }
         createLocationRequest()
     }
 
@@ -127,6 +119,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
     override fun onMarkerClick(p0: Marker?): Boolean {
         return false
+    }
+
+    /**
+     * This is where the good stuff happens
+     * Get user las location
+     * Update user location in database
+     * TODO: append user location to history!
+     */
+    private fun createLocationCallback() {
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(p0: LocationResult) {
+                super.onLocationResult(p0)
+
+                lastLocation = p0.lastLocation
+                placeMarkerOnMap(LatLng(lastLocation.latitude, lastLocation.longitude))
+                var tempArrayList: ArrayList<Location> = arrayListOf()
+                for(location in p0.locations) {
+                    // save user location history
+                }
+            }
+        }
     }
 
     private fun getAddress(latLng: LatLng): String {
@@ -232,6 +245,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         }
     }
 
+
+    /**
+     * Helper class to draw tiles on the world map
+     * Changes tile size depending on zoom level.
+     * TODO: mark "explored" tiles
+     */
     private class FoggyTileProvider(context: Context) : TileProvider {
 
         private val mScaleFactor: Float = context.resources.displayMetrics.density * 0.6f
