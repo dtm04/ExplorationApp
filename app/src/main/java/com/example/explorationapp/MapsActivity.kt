@@ -27,6 +27,8 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import com.example.explorationapp.room.User
 import com.example.explorationapp.helper.DatabaseHelper
+import com.example.explorationapp.room.Destination
+import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     // permissions object
@@ -43,7 +45,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
     private var locationUpdateState = false
-    private val databaseHelper = DatabaseHelper("0440")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +57,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         createLocationRequest()
+
+        // TODO: add location, or use google places API to get list of nearby
+        fab.setOnClickListener {
+            val favIntent = Intent()
+            val timestamp = System.currentTimeMillis()/1000
+            val destn = Destination(timestamp, lastLocation.longitude, lastLocation.latitude)
+            //favIntent.putExtra("new favorite", destn)
+        }
     }
 
     /**

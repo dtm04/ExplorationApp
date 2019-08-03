@@ -5,6 +5,7 @@ import android.location.Location
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.explorationapp.room.AppRoomDatabase
 import com.example.explorationapp.room.Destination
 import com.example.explorationapp.room.UserRepository
