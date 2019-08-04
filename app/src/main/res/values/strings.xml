@@ -25,4 +25,14 @@
     <string name="sign_in_button">Sign In</string>
     <string name="add_favorite">Add</string>
     <string name="error">There was an error!</string>
+    <string name="my_location">Current Map</string>
+    <string name="favorite_locations">My Favorites</string>
+    <string name="menu_filter">Filter</string>
+    <string name="destn_image">Picture of your location</string>
+    <string name="lat_lng">Insert Lat/Lng here</string>
+    <string name="favs_empty">You have not saved any locations, explore and share!</string>
+    <string name="navigation_drawer_header_title" translatable="false">Explore</string>
+    <string name="destination_detail_image_content_description" translation_description="A user photo or sample image of the location">Sample Image of Location</string>
+    <string name="navigation_drawer_header_content_description" translation_description="Content description for the image that is shown at the top of the navigation drawer.">Navigation drawer header logo</string>
+    <string name="saved_date" translation_description="Text indicates when destination was saved. Example: 'You shared this location on May 24, 2018'.">%1$s saved on %2$s</string>
 </resources>

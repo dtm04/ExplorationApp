@@ -1,21 +1,22 @@
 package com.example.explorationapp.room
 
+import android.location.Location
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
-import org.parceler.Parcel
 
 
-@Parcel
 @Entity(tableName = "destinations")
 data class Destination(
     @PrimaryKey
-    @SerializedName("timestamp")
+    @ColumnInfo(name = "id") val destinationId: String,
     var timestamp: Long = 0L,
-
-    @SerializedName("lat")
     var lat: Double = -1.0,
-    @SerializedName("lng")
-    var lng: Double = -1.0
-
-)
+    var lng: Double = -1.0,
+    var location: Location,
+    var name: String,
+    val imageUrl: String = "",
+    val description: String
+) {
+    override fun toString() = name
+}

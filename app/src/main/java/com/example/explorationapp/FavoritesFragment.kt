@@ -36,10 +36,6 @@ class FavoritesFragment : Fragment() {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
     private var thisContext: Context? = null
-    private val timestamp = System.currentTimeMillis()/1000
-    private val myStartFavorites = listOf(
-        Destination(timestamp, 42.36, 71.06)
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,10 +57,12 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        /*
         list_recycler_view.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = ListAdapter(myStartFavorites)
         }
+        */
     }
 
     // TODO: Rename method, update argument and hook method into UI event
