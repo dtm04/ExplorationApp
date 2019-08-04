@@ -16,6 +16,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.example.explorationapp.model.DestinationViewModel
+import com.example.explorationapp.model.UserViewModel
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -25,10 +29,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import com.example.explorationapp.room.User
-import com.example.explorationapp.helper.DatabaseHelper
 import com.example.explorationapp.room.Destination
+import com.example.explorationapp.ui.DestinationListAdapter
 import kotlinx.android.synthetic.main.activity_maps.*
+import org.parceler.Parcels
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     // permissions object
@@ -45,6 +49,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
     private var locationUpdateState = false
+    private lateinit var userViewModel: UserViewModel
+    private val newFragmentRequestCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,12 +64,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
         createLocationRequest()
 
+        /*
+        val adapter = DestinationListAdapter(this)
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
+        userViewModel.allFavorites.observe(this, Observer { favs ->
+            favs?.let{ adapter.setFavorites(it) }
+        })
+        */
+
         // TODO: add location, or use google places API to get list of nearby
         fab.setOnClickListener {
-            val favIntent = Intent()
+            val favIntent = Intent(this@MapsActivity, FavoritesFragment::class.java)
             val timestamp = System.currentTimeMillis()/1000
             val destn = Destination(timestamp, lastLocation.longitude, lastLocation.latitude)
-            //favIntent.putExtra("new favorite", destn)
+            favIntent.putExtra("Test", Parcels.wrap(destn))
+            startActivityForResult(favIntent, newFragmentRequestCode)
         }
     }
 
@@ -143,7 +158,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
                 lastLocation = p0.lastLocation
                 placeMarkerOnMap(LatLng(lastLocation.latitude, lastLocation.longitude))
-                var tempArrayList: ArrayList<Location> = arrayListOf()
+                //var tempArrayList: ArrayList<Location> = arrayListOf()
                 for(location in p0.locations) {
                     // save user location history
                 }
@@ -232,6 +247,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             if (resultCode == Activity.RESULT_OK) {
                 locationUpdateState = true
                 startLocationUpdates()
+            }
+        }
+
+        if(requestCode == newFragmentRequestCode && resultCode == Activity.RESULT_OK) {
+            data?.let { intentData ->
+                val destn = Parcels.unwrap<Destination>(intentData.getParcelableExtra(FavoritesFragment.EXTRA_REPLY))
+                userViewModel.insertFav(destn)
             }
         }
     }

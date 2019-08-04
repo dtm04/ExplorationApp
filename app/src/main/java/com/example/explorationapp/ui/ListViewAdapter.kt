@@ -7,6 +7,7 @@ import com.example.explorationapp.room.Destination
 
 class ListAdapter(private val list: List<Destination>)
     : RecyclerView.Adapter<FavoritesHolder>() {
+    private var favorites = emptyList<Destination>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -19,5 +20,10 @@ class ListAdapter(private val list: List<Destination>)
     }
 
     override fun getItemCount(): Int = list.size
+
+    internal fun setFavorites(favs: List<Destination>) {
+        this.favorites = favs
+        notifyDataSetChanged()
+    }
 
 }

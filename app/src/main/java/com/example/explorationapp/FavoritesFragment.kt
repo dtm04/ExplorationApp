@@ -8,12 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.explorationapp.model.UserViewModel
 import com.example.explorationapp.room.Destination
-import com.example.explorationapp.ui.FavoritesHolder
+import com.example.explorationapp.ui.DestinationListAdapter
 import com.example.explorationapp.ui.ListAdapter
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
@@ -39,7 +36,6 @@ class FavoritesFragment : Fragment() {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
     private var thisContext: Context? = null
-    private lateinit var userViewModel: UserViewModel
     private val timestamp = System.currentTimeMillis()/1000
     private val myStartFavorites = listOf(
         Destination(timestamp, 42.36, 71.06)
@@ -113,6 +109,7 @@ class FavoritesFragment : Fragment() {
     }
 
     companion object {
+        const val EXTRA_REPLY = "com.example.explorationApp.REPLY"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

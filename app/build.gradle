@@ -18,6 +18,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -66,6 +67,7 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
     kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.archLifecycleVersion"
     kapt "com.android.databinding:compiler:3.0.0-beta6"
+    kapt 'org.parceler:parceler:1.1.12'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
@@ -76,6 +78,9 @@ dependencies {
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    api 'org.parceler:parceler-api:1.1.9'
+
+    annotationProcessor 'org.parceler:parceler:1.1.12'
 }
 
 kotlin {

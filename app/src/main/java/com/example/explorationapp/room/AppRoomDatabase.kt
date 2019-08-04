@@ -35,7 +35,9 @@ abstract class AppRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppRoomDatabase::class.java,
                     "App_database"
-                ).addCallback(AppRoomDatabaseCallback(scope)).build()
+                ).addCallback(AppRoomDatabaseCallback(scope))
+                    .allowMainThreadQueries()  // SHOULD NOT BE USED IN PRODUCTION
+                    .build()
                 INSTANCE = instance
                 instance
             }
