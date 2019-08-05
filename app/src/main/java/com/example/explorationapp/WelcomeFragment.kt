@@ -43,22 +43,8 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_welcome, container, false)
-
-        view.findViewById<Button>(R.id.map_btn).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_mapsActivity)
-        }
-        view.findViewById<Button>(R.id.fav_btn).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_favoritesFragment)
-        }
-
         return view
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
     }
 
     /*

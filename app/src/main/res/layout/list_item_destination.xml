@@ -9,7 +9,7 @@
             name="clickListener"
             type="android.view.View.OnClickListener"/>
         <variable
-            name="plant"
+            name="destination"
             type="com.example.explorationapp.room.Destination"/>
     </data>
 

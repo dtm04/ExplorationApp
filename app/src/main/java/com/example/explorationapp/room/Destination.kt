@@ -13,7 +13,6 @@ data class Destination(
     var timestamp: Long = 0L,
     var lat: Double = -1.0,
     var lng: Double = -1.0,
-    var location: Location,
     var name: String,
     val imageUrl: String = "",
     val description: String

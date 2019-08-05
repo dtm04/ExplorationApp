@@ -48,7 +48,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/plant_detail_scrollview"
+            android:id="@+id/destination_detail_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
@@ -83,7 +83,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/destination_name"
-                    app:wateringText="@{viewModel.destination.location}"
                     tools:text="Some information about the area." />
 
                 <TextView
@@ -98,8 +97,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/destination_stats"
-                    app:renderHtml="@{viewModel.plant.description}"
-                    tools:text="Details about the plant" />
+                    app:renderHtml="@{viewModel.destination.description}"
+                    tools:text="Details about this location" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

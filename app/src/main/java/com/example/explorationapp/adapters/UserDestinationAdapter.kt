@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.explorationapp.R
+import com.example.explorationapp.WelcomeFragmentDirections
+import com.example.explorationapp.databinding.ListItemUserDestinationBinding
+import com.example.explorationapp.model.UserDestinationViewModel
 import com.example.explorationapp.room.UserDestinations
 
 class UserDestinationAdapter :
@@ -33,21 +36,21 @@ class UserDestinationAdapter :
         }
     }
 
-    private fun createOnClickListener(plantId: String): View.OnClickListener {
+    private fun createOnClickListener(destinationId: String): View.OnClickListener {
         return View.OnClickListener {
-            val direction = WelcomeFragmentDirections
+            val direction = WelcomeFragmentDirections.actionWelcomeFragmentToStatsFragment(destinationId)
             it.findNavController().navigate(direction)
         }
     }
 
     class ViewHolder(
-        private val binding: ListItemGardenPlantingBinding
+        private val binding: ListItemUserDestinationBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(listener: View.OnClickListener, plantings: PlantAndGardenPlantings) {
+        fun bind(listener: View.OnClickListener, destinations: UserDestinations) {
             with(binding) {
                 clickListener = listener
-                viewModel = PlantAndGardenPlantingsViewModel(plantings)
+                viewModel = UserDestinationViewModel(destinations)
                 executePendingBindings()
             }
         }
@@ -57,16 +60,16 @@ class UserDestinationAdapter :
 private class DestinationCallback : DiffUtil.ItemCallback<UserDestinations>() {
 
     override fun areItemsTheSame(
-        oldItem: PlantAndGardenPlantings,
-        newItem: PlantAndGardenPlantings
+        oldItem: UserDestinations,
+        newItem: UserDestinations
     ): Boolean {
-        return oldItem.plant.plantId == newItem.plant.plantId
+        return oldItem.destination.destinationId == newItem.destination.destinationId
     }
 
     override fun areContentsTheSame(
-        oldItem: PlantAndGardenPlantings,
-        newItem: PlantAndGardenPlantings
+        oldItem: UserDestinations,
+        newItem: UserDestinations
     ): Boolean {
-        return oldItem.plant == newItem.plant
+        return oldItem.destination == newItem.destination
     }
 }

@@ -15,7 +15,7 @@ import com.example.explorationapp.workers.SeedDatabaseWorker
  * See here: https://medium.com/androiddevelopers/understanding-migrations-with-room-f01e04b07929
  *  Source Code thanks to Google Sunflower Project.
  */
-@Database(entities = [User::class, Destination::class], version = 3, exportSchema = false)
+@Database(entities = [User::class, Destination::class], version = 4, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppRoomDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao

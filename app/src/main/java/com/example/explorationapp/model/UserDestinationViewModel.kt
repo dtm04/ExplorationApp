@@ -12,6 +12,6 @@ class UserDestinationViewModel(destinations: UserDestinations) : ViewModel() {
     private val dateFormat by lazy { SimpleDateFormat("MMM d, yyyy", Locale.US) }
 
     val imageUrl = ObservableField<String>(destination.imageUrl)
-    val destinationName = ObservableField<String>(destination.name)
+    val name = ObservableField<String>(destination.name)
     val timestamp = ObservableField<String>(dateFormat.format(user.timestamp.time))
 }

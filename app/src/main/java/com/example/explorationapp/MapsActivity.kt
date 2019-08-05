@@ -69,11 +69,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
         // TODO: add location, or use google places API to get list of nearby
         fab.setOnClickListener {
-            val favIntent = Intent(this@MapsActivity, FavoritesFragment::class.java)
-            val timestamp = System.currentTimeMillis()/1000
-            val destn = Destination("A1", timestamp, lastLocation.longitude, lastLocation.latitude, "Test")
-            //favIntent.putExtra("Test", Parcels.wrap(destn))
-            //startActivityForResult(favIntent, newFragmentRequestCode)
+            // TODO: IDK
         }
     }
 

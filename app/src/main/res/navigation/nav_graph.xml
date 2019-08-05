@@ -11,7 +11,15 @@
         android:id="@+id/favoritesFragment"
         android:name="com.example.explorationapp.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_statsFragment"
+            app:destination="@id/statsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/socialFragment"
         android:name="com.example.explorationapp.SocialFragment"
@@ -21,7 +29,11 @@
         android:id="@+id/statsFragment"
         android:name="com.example.explorationapp.StatsFragment"
         android:label="fragment_stats"
-        tools:layout="@layout/fragment_stats" />
+        tools:layout="@layout/fragment_stats">
+        <argument
+            android:name="destinationId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.explorationapp.WelcomeFragment"
@@ -33,20 +45,32 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />/>
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_welcomeFragment_to_statsFragment"
-            app:destination="@id/statsFragment" />
+            app:destination="@id/statsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_welcomeFragment_to_mapsActivity"
-            app:destination="@id/mapsActivity" />
+            app:destination="@id/mapsActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_welcomeFragment_to_socialFragment"
-            app:destination="@id/socialFragment" />
+            app:destination="@id/socialFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <activity
         android:id="@+id/mapsActivity"
         android:name="com.example.explorationapp.MapsActivity"
-        android:label="activity_maps"
+        android:label="Your Area"
         tools:layout="@layout/activity_maps" />
 </navigation>

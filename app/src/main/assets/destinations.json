@@ -1,0 +1,114 @@
+[
+  {
+    "destinationId": "boston-northend",
+    "name": "Boston",
+    "description": "The North End neighborhood of Boston is filled with restaurants.",
+    "lat": 42.21,
+    "lng": 71.30,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/aa/North_End%2C_Boston.jpg"
+  },
+  {
+    "destinationId": "philly-independence",
+    "name": "Philadelphia",
+    "description": "Philadelphia is a historic American city, visit and check it off your list!",
+    "lat": 39.56,
+    "lng": 75.90,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Independence_Hall_Philly.JPG"
+  },
+  {
+    "destinationId": "sanfran",
+    "name": "San Francisco",
+    "description": "San Francisco, a hub of modern technology and culture.  Good weather, good beaches, bad traffic.",
+    "lat": 37.47,
+    "lng": 122.25,
+    "imageUrl": "https://commons.wikimedia.org/wiki/File:San_Francisco_downtown_late_afternoon_looking_east.JPG"
+  },
+  {
+    "destinationId": "elpaso-tx",
+    "name": "El Paso, Texas",
+    "description": "This bordertown is full of independent cowboys.  Visit at your own risk.",
+    "lat": 31.47,
+    "lng": 106.29,
+    "imageUrl": "https://commons.wikimedia.org/wiki/File:El_Paso_High_School_overview.jpg"
+  },
+  {
+    "destinationId": "seoul-sk",
+    "name": "Seoul, Korea",
+    "description": "Loved visiting Seoul, can't wait to go back!",
+    "lat": 37.515,
+    "lng": 126.89,
+    "imageUrl": "https://commons.wikimedia.org/wiki/File:Red_Seoul_(%EB%B6%89%EC%9D%80_%EC%84%9C%EC%9A%B8)_-_panoramio.jpg"
+  },
+  {
+    "destinationId": "londong-end",
+    "name": "London",
+    "description": "The weather sucks, but the people and pubs are great!",
+    "lat": 51.50,
+    "lng": -0.12,
+    "imageUrl": "https://commons.wikimedia.org/wiki/File:London,_City_of_London_--_2016_--_4795.jpg"
+  },
+  {
+    "destinationId": "tokyo-jp",
+    "name": "Tokyo",
+    "description": "Just..beautiful.  Love this place.",
+    "lat": 35.67,
+    "lng": 139.84,
+    "imageUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Tower_and_around_Skyscrapers.jpg"
+  },
+  {
+    "destinationId": "lasvegas-nv",
+    "name": "Las Vegas",
+    "description": "What happens in Vegas, stays in Vegas.",
+    "lat": 36.11,
+    "lng": -115.17,
+    "imageUrl": "https://commons.wikimedia.org/wiki/File:Welcome_to_Fabulous_Las_Vegas.jpg"
+  },
+  {
+    "destinationId": "dublin-ire",
+    "name": "Dublin",
+    "description": "Apparently some of my relatives come from here.  Nice place.",
+    "lat": 53.20,
+    "lng": 6.16,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/StPatricksCathedralDublin.JPG"
+  },
+  {
+    "destinationId": "shenz",
+    "name": "Shenzhen",
+    "description": "The one and only.  An absolutely massive and inspiring city.",
+    "lat": 22.54,
+    "lng": 114.06,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Shenzhen_huizhanzhongxin.jpg"
+  },
+  {
+    "destinationId": "jamaica-beach",
+    "name": "Jamaica",
+    "description": "The beaches of Jamaica.  Looks relaxing.",
+    "lat": 22.98,
+    "lng": -82.17,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/50/Bluefields.jpg"
+  },
+  {
+    "destinationId": "toronto-ca",
+    "name": "Toronto",
+    "description": "Cold place, but a really nice city.  French culture, hockey, what's not to like.",
+    "lat": 43.76,
+    "lng": -79.41,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Toronto_-_ON_-_Toronto_Skyline2.jpg"
+  },
+  {
+    "destinationId": "india-pal",
+    "name": "India",
+    "description": "Have never been to a country so different yet so similar.  Would love to go again.",
+    "lat": 26.64,
+    "lng": 77.21,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Closer_View_to_Harminder_sahib_%28_golden_temple_%29.JPG"
+  },
+  {
+    "destinationId": "aus-outback",
+    "name": "Australia",
+    "description": "Never been to the outback.  Will have to go one day, just avoid all the deadly plants and animals.",
+    "lat": 33.51,
+    "lng": 151.12,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Termite_mounds_NT.JPG"
+  }
+]
