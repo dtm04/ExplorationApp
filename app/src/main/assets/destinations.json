@@ -21,7 +21,7 @@
     "description": "San Francisco, a hub of modern technology and culture.  Good weather, good beaches, bad traffic.",
     "lat": 37.47,
     "lng": 122.25,
-    "imageUrl": "https://commons.wikimedia.org/wiki/File:San_Francisco_downtown_late_afternoon_looking_east.JPG"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Lightmatter_sanfrancisco.jpg"
   },
   {
     "destinationId": "elpaso-tx",
@@ -29,7 +29,7 @@
     "description": "This bordertown is full of independent cowboys.  Visit at your own risk.",
     "lat": 31.47,
     "lng": 106.29,
-    "imageUrl": "https://commons.wikimedia.org/wiki/File:El_Paso_High_School_overview.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/El_paso_downtown_main.jpg"
   },
   {
     "destinationId": "seoul-sk",
@@ -37,7 +37,7 @@
     "description": "Loved visiting Seoul, can't wait to go back!",
     "lat": 37.515,
     "lng": 126.89,
-    "imageUrl": "https://commons.wikimedia.org/wiki/File:Red_Seoul_(%EB%B6%89%EC%9D%80_%EC%84%9C%EC%9A%B8)_-_panoramio.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Seoul_Subway_1_Ichon.jpg"
   },
   {
     "destinationId": "londong-end",
@@ -45,7 +45,7 @@
     "description": "The weather sucks, but the people and pubs are great!",
     "lat": 51.50,
     "lng": -0.12,
-    "imageUrl": "https://commons.wikimedia.org/wiki/File:London,_City_of_London_--_2016_--_4795.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/London_skyline_tower_bridge_east.jpg"
   },
   {
     "destinationId": "tokyo-jp",
@@ -53,7 +53,7 @@
     "description": "Just..beautiful.  Love this place.",
     "lat": 35.67,
     "lng": 139.84,
-    "imageUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Tower_and_around_Skyscrapers.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Akihabara_tree-lined_road.jpg"
   },
   {
     "destinationId": "lasvegas-nv",
@@ -61,7 +61,7 @@
     "description": "What happens in Vegas, stays in Vegas.",
     "lat": 36.11,
     "lng": -115.17,
-    "imageUrl": "https://commons.wikimedia.org/wiki/File:Welcome_to_Fabulous_Las_Vegas.jpg"
+    "imageUrl": "hhttps://upload.wikimedia.org/wikipedia/commons/7/76/Las_Vegas_strip.jpg"
   },
   {
     "destinationId": "dublin-ire",
@@ -69,7 +69,7 @@
     "description": "Apparently some of my relatives come from here.  Nice place.",
     "lat": 53.20,
     "lng": 6.16,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/StPatricksCathedralDublin.JPG"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/OConnellStreet.JPG"
   },
   {
     "destinationId": "shenz",
@@ -85,7 +85,7 @@
     "description": "The beaches of Jamaica.  Looks relaxing.",
     "lat": 22.98,
     "lng": -82.17,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/50/Bluefields.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Bluefields_Beach%2C_Jamaica.jpg"
   },
   {
     "destinationId": "toronto-ca",

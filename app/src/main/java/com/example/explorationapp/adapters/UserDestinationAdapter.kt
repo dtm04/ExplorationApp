@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.explorationapp.R
+import com.example.explorationapp.SocialFragmentDirections
 import com.example.explorationapp.WelcomeFragmentDirections
 import com.example.explorationapp.databinding.ListItemUserDestinationBinding
 import com.example.explorationapp.model.UserDestinationViewModel
@@ -38,7 +39,7 @@ class UserDestinationAdapter :
 
     private fun createOnClickListener(destinationId: String): View.OnClickListener {
         return View.OnClickListener {
-            val direction = WelcomeFragmentDirections.actionWelcomeFragmentToStatsFragment(destinationId)
+            val direction = SocialFragmentDirections.actionSocialFragmentToStatsFragment(destinationId)
             it.findNavController().navigate(direction)
         }
     }

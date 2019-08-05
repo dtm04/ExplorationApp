@@ -27,7 +27,7 @@
     <string name="add_favorite">Add</string>
     <string name="error">There was an error!</string>
     <string name="my_location">Current Map</string>
-    <string name="favorite_locations">Recent Areas</string>
+    <string name="favorite_locations">Recommended by Friends</string>
     <string name="menu_filter">Filter</string>
     <string name="destn_image">Picture of your location</string>
     <string name="lat_lng">Insert Lat/Lng here</string>

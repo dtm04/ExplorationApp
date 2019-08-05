@@ -1,3 +1,13 @@
+/**************************
+ *  Exploration App: WIT-Boston with SUSTECH-Shenzhen
+ *
+ *  An app for location sharing and discovery.  Earn reputation as you
+ *  travel.  Share notable locations with friends.
+ *
+ *  Integrated with Arduino wearable technology, GPS services, Google maps.
+ *  Built using Kotlin in Android Studio
+ *  Architecture and Code inspired by Google - Sunflower.
+ *************************/
 package com.example.explorationapp
 
 import android.os.Bundle
@@ -12,9 +22,20 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.explorationapp.databinding.ActivityMainBinding
-import com.example.explorationapp.model.UserViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * TODO list
+ *  -- fab button on map link to save location + add photo option
+ *  -- Misty/Foggy map overlay
+ *  -- Connect bluetooth receiver to Arduino
+ *  -- Configure Arduino drone to use GPS and/or camera
+ *  -- Upload arduino statstics to application
+ *  -- Rename fragments to make more sense
+ *  -- Convert tile overlay to data class, store traveled areas using ROOM
+ *  -- (Optional) Convert to cloud based storage
+ *  -- (Optional) Add user Authentication and accounts
+ *  -- (Optional) Integrate with google places API find nearby areas
+ */
 /**
  * An activity that inflates a layout that has a NavHostFragment.
  */

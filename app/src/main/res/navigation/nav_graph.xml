@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.explorationapp.FavoritesFragment"
-        android:label="fragment_favorites"
+        android:label="Recommended Locations"
         tools:layout="@layout/fragment_favorites" >
         <action
             android:id="@+id/action_favoritesFragment_to_statsFragment"
@@ -23,12 +23,20 @@
     <fragment
         android:id="@+id/socialFragment"
         android:name="com.example.explorationapp.SocialFragment"
-        android:label="fragment_social"
-        tools:layout="@layout/fragment_social" />
+        android:label="Saved Locations"
+        tools:layout="@layout/fragment_social" >
+        <action
+            android:id="@+id/action_socialFragment_to_statsFragment"
+            app:destination="@id/statsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/statsFragment"
         android:name="com.example.explorationapp.StatsFragment"
-        android:label="fragment_stats"
+        android:label="Details"
         tools:layout="@layout/fragment_stats">
         <argument
             android:name="destinationId"

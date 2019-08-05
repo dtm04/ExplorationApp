@@ -25,16 +25,14 @@ class SeedDatabaseWorker(
     private val TAG by lazy { SeedDatabaseWorker::class.java.simpleName }
 
     override suspend fun doWork(): Result = coroutineScope {
-
         try {
+            Log.i(TAG, "METHOD IS BEING EXECUTED")
             applicationContext.assets.open(USER_DATA_FILENAME).use { inputStream ->
                 JsonReader(inputStream.reader()).use { jsonReader ->
                     val destType = object : TypeToken<List<Destination>>() {}.type
                     val destList: List<Destination> = Gson().fromJson(jsonReader, destType)
-
                     val database = AppRoomDatabase.getInstance(applicationContext)
                     database.destinationDao().insertAll(destList)
-
                     Result.success()
                 }
             }
