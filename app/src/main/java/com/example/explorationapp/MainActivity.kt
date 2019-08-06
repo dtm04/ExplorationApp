@@ -10,7 +10,9 @@
  *************************/
 package com.example.explorationapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
+    private lateinit var launchIntent: Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setupWithNavController(navController)
     }
 
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
@@ -69,5 +73,22 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+    /*
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.launchApp -> {
+                launchApp()
+                true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+    */
+
+    fun launchApp(menuItem: MenuItem) {
+        //if(menuItem.itemId )
+        launchIntent = packageManager.getLaunchIntentForPackage("com.tonydicola.bletest.app")!!
+        startActivity(launchIntent)
     }
 }

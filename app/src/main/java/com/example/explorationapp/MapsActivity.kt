@@ -43,6 +43,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     // vars to request and update user location
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
+    private lateinit var launchIntent: Intent
     private var locationUpdateState = false
     private lateinit var userViewModel: UserViewModel
     private val newFragmentRequestCode = 1
@@ -68,8 +69,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         */
 
         // TODO: add location, or use google places API to get list of nearby
+        launchIntent = packageManager.getLaunchIntentForPackage("com.tonydicola.bletest.app")!!
         fab.setOnClickListener {
-            // TODO: IDK
+            startActivity(launchIntent)
         }
     }
 

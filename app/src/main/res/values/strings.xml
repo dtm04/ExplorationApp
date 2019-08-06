@@ -29,8 +29,10 @@
     <string name="my_location">Current Map</string>
     <string name="favorite_locations">Recommended by Friends</string>
     <string name="menu_filter">Filter</string>
+    <string name="drone_activity">Drone Controls and Steps</string>
     <string name="destn_image">Picture of your location</string>
     <string name="lat_lng">Insert Lat/Lng here</string>
+    <string name="launch_app">Arduino Control Panel</string>
     <string name="favs_empty">You have not saved any locations, explore and share!</string>
     <string name="navigation_drawer_header_title" translatable="false">Explore</string>
     <string name="share_text_fav" translation_description="The default messaged used when sharing a location">Check out %s</string>
