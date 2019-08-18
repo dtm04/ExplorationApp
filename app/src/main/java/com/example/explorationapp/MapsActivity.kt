@@ -27,6 +27,7 @@ import com.google.android.gms.maps.model.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import com.example.explorationapp.room.Destination
+import com.google.android.gms.maps.model.TileProvider.NO_TILE
 import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -47,6 +48,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private var locationUpdateState = false
     private lateinit var userViewModel: UserViewModel
     private val newFragmentRequestCode = 1
+    lateinit var geofencingClient: GeofencingClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,9 +59,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         mapFragment.getMapAsync(this)
         createLocationCallback()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
+        geofencingClient = LocationServices.getGeofencingClient(this)
         createLocationRequest()
-
         /*
         val adapter = DestinationListAdapter(this)
         userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
@@ -69,9 +70,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         */
 
         // TODO: add location, or use google places API to get list of nearby
-        launchIntent = packageManager.getLaunchIntentForPackage("com.tonydicola.bletest.app")!!
+        //launchIntent = packageManager.getLaunchIntentForPackage("com.tonydicola.bletest.app")!!
         fab.setOnClickListener {
-            startActivity(launchIntent)
+
         }
     }
 
@@ -266,6 +267,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     /**
      * Helper class to draw tiles on the world map
      * Changes tile size depending on zoom level.
+     * Uses TileProvider interface to provide the overlay.
+     * At zoom level N, the world is divided into 4^N tiles arranged in 2^n x 2^n grid.
      * TODO: mark "explored" tiles
      */
     private class FoggyTileProvider(context: Context) : TileProvider {
@@ -274,8 +277,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         private val mBorderTile: Bitmap
 
         init {
-            /* Scale factor based on density, with a 0.6 multiplier to increase tile generation
-             * speed */
+            // Scale factor based on density, with a 0.6 multiplier to increase tile generation speed
             val borderPaint = Paint(Paint.ANTI_ALIAS_FLAG)
             borderPaint.style = Paint.Style.STROKE
             mBorderTile = Bitmap.createBitmap((TILE_SIZE_DP * mScaleFactor).toInt(),
@@ -286,6 +288,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         }
 
         override fun getTile(x: Int, y: Int, zoom: Int): Tile {
+            if(zoom != 12) {
+                // using zoom level 12 for testing default zoom level tiles.
+                return NO_TILE
+            }
             val coordTile = drawTileCoords(x, y, zoom)
             val stream = ByteArrayOutputStream()
             coordTile.compress(Bitmap.CompressFormat.PNG, 0, stream)

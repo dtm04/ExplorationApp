@@ -17,7 +17,10 @@ import com.example.explorationapp.model.DestinationDetailViewModel
 import com.example.explorationapp.utils.InjectorUtils
 import com.google.android.material.snackbar.Snackbar
 
-
+/**
+ * Provides the detailed view of a destination.
+ * User can view destination photo and description here.
+ */
 class StatsFragment : Fragment() {
 
     private val args: StatsFragmentArgs by navArgs()

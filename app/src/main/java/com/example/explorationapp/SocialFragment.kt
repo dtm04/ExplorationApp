@@ -23,13 +23,10 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [SocialFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [SocialFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment where user can view saved locations, clicking on a location opens up a detailed view
+ * and gives the user a share button for that location.
  *
+ * A destination must be added to favorites before it appears here.
  */
 class SocialFragment : Fragment() {
 

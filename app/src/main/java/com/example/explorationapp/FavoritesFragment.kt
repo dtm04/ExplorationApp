@@ -17,12 +17,11 @@ import com.example.explorationapp.utils.InjectorUtils
 
 
 /**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [FavoritesFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [FavoritesFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Shows a list of recommended destinations as a mock-up.
+ * This fragment can also contains a list of saved user favorites.
+ * TODO:
+ *  - Allow a user to save a location from map activity.
+ *  - Show those here along with recommended destinations.
  *
  */
 class FavoritesFragment : Fragment() {

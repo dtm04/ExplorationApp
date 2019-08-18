@@ -26,20 +26,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.explorationapp.databinding.ActivityMainBinding
 
 /**
- * TODO list
- *  -- fab button on map link to save location + add photo option
- *  -- Misty/Foggy map overlay
- *  -- Connect bluetooth receiver to Arduino
- *  -- Configure Arduino drone to use GPS and/or camera
- *  -- Upload arduino statstics to application
- *  -- Rename fragments to make more sense
- *  -- Convert tile overlay to data class, store traveled areas using ROOM
- *  -- (Optional) Convert to cloud based storage
- *  -- (Optional) Add user Authentication and accounts
- *  -- (Optional) Integrate with google places API find nearby areas
- */
-/**
  * An activity that inflates a layout that has a NavHostFragment.
+ * This project tries to stick to MVVM architecture (model-view-viewmodel)
+ *  - This means that views handle the UI.
+ *  - Views go through viewmodels to access backend data.
+ *  - Viewmodels respond back to views using observables (LiveData).
+ *  - The Model aspect contains the repositories (single source of truth, talks to DB or web)
+ *  - The Model also connects directly to the DB (Room database here, Firebase in the future).
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -86,9 +79,11 @@ class MainActivity : AppCompatActivity() {
     }
     */
 
-    fun launchApp(menuItem: MenuItem) {
+    // Launch arduino control panel, action is bound in xml.  The arduino app must be installed.
+    fun launchArduinoApp(menuItem: MenuItem) {
         //if(menuItem.itemId )
         launchIntent = packageManager.getLaunchIntentForPackage("com.tonydicola.bletest.app")!!
         startActivity(launchIntent)
     }
+
 }

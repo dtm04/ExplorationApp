@@ -13,7 +13,7 @@
         android:title="@string/favorite_locations"/>
 
     <item
-        android:id="@+id/launchApp"
+        android:id="@+id/launchArduinoApp"
         android:title="@string/launch_app"
-        android:onClick="launchApp"/>
+        android:onClick="launchArduinoApp"/>
 </menu>
