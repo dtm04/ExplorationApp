@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.example.explorationapp.adapters.DestinationAdapter
-import com.example.explorationapp.databinding.FragmentFavoritesBinding
+import com.example.explorationapp.databinding.FragmentRecommendedBinding  // UPDATE
 import com.example.explorationapp.model.DestinationListViewModel
 import com.example.explorationapp.utils.InjectorUtils
 
@@ -24,7 +24,7 @@ import com.example.explorationapp.utils.InjectorUtils
  *  - Show those here along with recommended destinations.
  *
  */
-class FavoritesFragment : Fragment() {
+class RecommendedFragment : Fragment() {
     private val viewModel: DestinationListViewModel by viewModels {
         InjectorUtils.provideDestinationListViewModelFactory(requireContext())
     }
@@ -35,7 +35,7 @@ class FavoritesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        val binding = FragmentRecommendedBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
         val adapter = DestinationAdapter()
@@ -62,7 +62,7 @@ class FavoritesFragment : Fragment() {
 
     private fun subscribeUi(adapter: DestinationAdapter) {
         viewModel.destinations.observe(viewLifecycleOwner) { destns ->
-            if (destns != null) adapter.submitList(destns)
+            adapter.submitList(destns)
         }
     }
 

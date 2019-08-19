@@ -1,18 +1,7 @@
-/**************************
- *  Exploration App: WIT-Boston with SUSTECH-Shenzhen
- *
- *  An app for location sharing and discovery.  Earn reputation as you
- *  travel.  Share notable locations with friends.
- *
- *  Integrated with Arduino wearable technology, GPS services, Google maps.
- *  Built using Kotlin in Android Studio
- *  Architecture and Code inspired by Google - Sunflower.
- *************************/
 package com.example.explorationapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -80,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     */
 
     // Launch arduino control panel, action is bound in xml.  The arduino app must be installed.
-    fun launchArduinoApp(menuItem: MenuItem) {
+    fun launchArduinoApp() {
         //if(menuItem.itemId )
         launchIntent = packageManager.getLaunchIntentForPackage("com.tonydicola.bletest.app")!!
         startActivity(launchIntent)

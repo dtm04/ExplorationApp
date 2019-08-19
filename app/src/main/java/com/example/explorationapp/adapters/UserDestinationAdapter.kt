@@ -16,6 +16,10 @@ import com.example.explorationapp.databinding.ListItemUserDestinationBinding
 import com.example.explorationapp.model.UserDestinationViewModel
 import com.example.explorationapp.room.UserDestinations
 
+/**
+ * Adapter used for Recycler View.
+ * Used when viewing list of saved locations.  Click destination --> detail view
+ */
 class UserDestinationAdapter :
         ListAdapter<UserDestinations, UserDestinationAdapter.ViewHolder>(DestinationCallback()) {
 

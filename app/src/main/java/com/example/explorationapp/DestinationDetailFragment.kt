@@ -1,8 +1,6 @@
 package com.example.explorationapp
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -12,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
-import com.example.explorationapp.databinding.FragmentStatsBinding
+import com.example.explorationapp.databinding.FragmentDetailsBinding
 import com.example.explorationapp.model.DestinationDetailViewModel
 import com.example.explorationapp.utils.InjectorUtils
 import com.google.android.material.snackbar.Snackbar
@@ -21,9 +19,9 @@ import com.google.android.material.snackbar.Snackbar
  * Provides the detailed view of a destination.
  * User can view destination photo and description here.
  */
-class StatsFragment : Fragment() {
+class DestinationDetailFragment : Fragment() {
 
-    private val args: StatsFragmentArgs by navArgs()
+    private val args: DestinationDetailFragmentArgs by navArgs()
     private lateinit var shareText: String
     private val destinationDetailViewModel: DestinationDetailViewModel by viewModels{
         InjectorUtils.provideDestinationDetailViewModelFactory(requireActivity(), args.destinationId)
@@ -34,10 +32,10 @@ class StatsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentStatsBinding>(
-            inflater, R.layout.fragment_stats, container, false).apply {
+        val binding = DataBindingUtil.inflate<FragmentDetailsBinding>(
+            inflater, R.layout.fragment_details, container, false).apply {
             viewModel = destinationDetailViewModel
-            lifecycleOwner = this@StatsFragment
+            lifecycleOwner = this@DestinationDetailFragment
             fab.setOnClickListener { view ->
                 destinationDetailViewModel.addDestination()
                 Snackbar.make(view, R.string.destination_saved, Snackbar.LENGTH_LONG).show()
@@ -45,11 +43,7 @@ class StatsFragment : Fragment() {
         }
 
         destinationDetailViewModel.destination.observe(this) { destn ->
-            shareText = if (destn == null) {
-                ""
-            } else {
-                getString(R.string.share_text_fav, destn.name)
-            }
+            shareText = getString(R.string.share_text_fav, destn.name)
         }
 
         setHasOptionsMenu(true)

@@ -8,36 +8,36 @@
     app:startDestination="@id/welcomeFragment">
 
     <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.example.explorationapp.FavoritesFragment"
+        android:id="@+id/recommendedFragment"
+        android:name="com.example.explorationapp.RecommendedFragment"
         android:label="Recommended Locations"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_recommended" >
         <action
             android:id="@+id/action_favoritesFragment_to_statsFragment"
-            app:destination="@id/statsFragment"
+            app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
-        android:id="@+id/socialFragment"
+        android:id="@+id/savedFragment"
         android:name="com.example.explorationapp.SocialFragment"
         android:label="Saved Locations"
-        tools:layout="@layout/fragment_social" >
+        tools:layout="@layout/fragment_saved_destinations" >
         <action
             android:id="@+id/action_socialFragment_to_statsFragment"
-            app:destination="@id/statsFragment"
+            app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
-        android:id="@+id/statsFragment"
-        android:name="com.example.explorationapp.StatsFragment"
+        android:id="@+id/detailFragment"
+        android:name="com.example.explorationapp.DestinationDetailFragment"
         android:label="Details"
-        tools:layout="@layout/fragment_stats">
+        tools:layout="@layout/fragment_details">
         <argument
             android:name="destinationId"
             app:argType="string" />
@@ -49,14 +49,14 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment"
+            app:destination="@id/recommendedFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_welcomeFragment_to_statsFragment"
-            app:destination="@id/statsFragment"
+            app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -70,7 +70,7 @@
             app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_welcomeFragment_to_socialFragment"
-            app:destination="@id/socialFragment"
+            app:destination="@id/savedFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

@@ -6,10 +6,10 @@
         android:id="@+id/mapsActivity"
         android:title="@string/my_location"/>
     <item
-        android:id="@+id/socialFragment"
+        android:id="@+id/savedFragment"
         android:title="@string/social_fragment"/>
     <item
-        android:id="@+id/favoritesFragment"
+        android:id="@+id/recommendedFragment"
         android:title="@string/favorite_locations"/>
 
     <item

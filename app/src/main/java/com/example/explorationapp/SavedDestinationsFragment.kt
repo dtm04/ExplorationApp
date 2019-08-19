@@ -1,7 +1,5 @@
 package com.example.explorationapp
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,10 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.example.explorationapp.adapters.UserDestinationAdapter
-import com.example.explorationapp.databinding.FragmentSocialBinding
-import com.example.explorationapp.model.UserDestinationViewModel
+import com.example.explorationapp.databinding.FragmentSavedDestinationsBinding
 import com.example.explorationapp.model.UserViewModel
-import com.example.explorationapp.model.UserViewModelFactory
 import com.example.explorationapp.utils.InjectorUtils
 
 
@@ -39,14 +35,14 @@ class SocialFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSocialBinding.inflate(inflater, container, false)
+        val binding = FragmentSavedDestinationsBinding.inflate(inflater, container, false)
         val adapter = UserDestinationAdapter()
         binding.destinationList.adapter = adapter
         subscribeUi(adapter, binding)
         return binding.root
     }
 
-    private fun subscribeUi(adapter: UserDestinationAdapter, binding: FragmentSocialBinding) {
+    private fun subscribeUi(adapter: UserDestinationAdapter, binding: FragmentSavedDestinationsBinding) {
         viewModel.userDestinations.observe(viewLifecycleOwner) { destns ->
             binding.hasLocations = !destns.isNullOrEmpty()
         }

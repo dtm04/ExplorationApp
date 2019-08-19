@@ -7,10 +7,14 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.explorationapp.FavoritesFragmentDirections
+import com.example.explorationapp.RecommendedFragmentDirections
 import com.example.explorationapp.databinding.ListItemDestinationBinding
 import com.example.explorationapp.room.Destination
 
+/**
+ * Adapter used for recycler view.
+ * When viewing the list of recommended destinations, click on destn --> detailed destination view
+ */
 class DestinationAdapter : ListAdapter<Destination, DestinationAdapter.ViewHolder>(DestinationDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -28,7 +32,7 @@ class DestinationAdapter : ListAdapter<Destination, DestinationAdapter.ViewHolde
 
     private fun createOnClickListener(destnId: String): View.OnClickListener {
         return View.OnClickListener {
-            val direction = FavoritesFragmentDirections.actionFavoritesFragmentToStatsFragment(destnId)
+            val direction = RecommendedFragmentDirections.actionFavoritesFragmentToStatsFragment(destnId)
             it.findNavController().navigate(direction)
         }
     }
