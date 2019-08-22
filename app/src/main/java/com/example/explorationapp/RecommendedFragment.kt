@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.example.explorationapp.adapters.DestinationAdapter
-import com.example.explorationapp.databinding.FragmentRecommendedBinding  // UPDATE
+import com.example.explorationapp.databinding.FragmentRecommendedBinding
 import com.example.explorationapp.model.DestinationListViewModel
 import com.example.explorationapp.utils.InjectorUtils
 
